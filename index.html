@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | Article preview component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+
+      /*
+        1. Use a more-intuitive box-sizing model.
+      */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      };
+
+      /*
+        2. Remove default margin
+      */
+      * {
+        margin: 0;
+      }
+
+      /*
+        Typographic tweaks!
+        3. Add accessible line-height
+        4. Improve text rendering
+      */
+      body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /*
+        5. Improve media defaults
+      */
+      img, picture, video, canvas, svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      /*
+        6. Remove built-in form typography styles
+      */
+      input, button, textarea, select {
+        font: inherit;
+      }
+
+      /*
+        7. Avoid text overflows
+      */
+      p, h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+      }
+
+      /*
+        8. Create a root stacking context
+      */
+      #root, #__next {
+        isolation: isolate;
+      }
+
+
+    main {
+      background-color: hsl(210, 46%, 95%);
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 1;
+      max-height: 80vh;
+      max-width: 90vw;
+      background-color: white;
+      border-radius: 5%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0%;
+    }
+
+    .container > img {
+      border-top-left-radius: 5%;
+      border-top-right-radius: 5%;
+      max-height: 40%;
+      min-width: 100%;
+      object-fit: fill;
+      justify-self: flex-start;
+    }
+
+    .container h1 {
+      font-family: "Manrope", sans-serif;
+      font-size: 1.1rem;
+      color: hsl(217, 19%, 35%);
+      font-weight: 700;
+      margin: 0px 40px;
+
+    }
+
+    .container p {
+      font-family: "Manrope", sans-serif;
+      font-size: 0.9rem;
+      color: hsl(217, 19%, 35%);
+      font-weight: 500;
+      margin: 0px 40px;
+    }
+
+    .bottomSection {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 0%;
+      min-width: 100%;
+      border-bottom-left-radius: 5%;
+      border-bottom-right-radius: 5%;
+      justify-content: center;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      justify-self: flex-end;
+      padding: 5%;
+    }
+
+    .bottomSection .avatar {
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .bottomSection h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: hsl(217, 19%, 35%);
+      text-align: left;
+      margin: 0%;
+    }
+
+    .bottomSection p {
+      font-family: "Manrope", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: hsl(217, 19%, 35%);
+      text-align: left;
+      margin: 0%;
+    }
+
+    .bottomSection .share {
+      height: 40px;
+      margin-left: 20px;
+      border-radius: 50%;
+      background-color: hsl(210, 46%, 95%);
+      object-fit: scale-down;
+    }
+
+    .bottomSectionShare {
+      background-color: hsl(214, 17%, 51%);
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      margin-bottom: 0%;
+      max-width: 100%;
+      border-bottom-left-radius: 5%;
+      border-bottom-right-radius: 5%;
+      padding: 5% 40%;
+      justify-content: center;
+      align-items: center;
+      justify-self: flex-end;
+
+    }
+
+    .bottomSectionShare h3{
+      text-transform: uppercase;
+      color: aliceblue;
+      font-family: "Manrope", sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 5px;
+    }
+
+    .bottomSectionShare img {
+      height: 30px;
+      margin-left: 20px;
+      border-radius: 50%;
+      object-fit: scale-down;
+    }
+
+    .bottomSectionShare .share {
+      background-color: hsl(210, 46%, 95%);
+      object-fit: scale-down;
+    }
+
+    .invisible {
+      display: none;
+    }
+
+@media (min-width: 48rem) {
+
+  .container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 1fr 1fr 1fr;
+    max-width: 60%;
+  }
+
+  .container > img {
+      grid-area: 1/1/4/2;
+      min-height: 100%;
+      min-width: 100%;
+      object-fit: cover;
+  }
+
+  .bottomSection {
+      justify-content: space-evenly;
+  }
+
+  .bottomSectionShare {
+position: absolute;
+top: 46%;
+margin-right: -10%;
+padding: 1% 2%;
+border-radius: 5%;
+
+  }
+
+  .bottomSectionShare::after {
+    content: " ";
+    position: absolute;
+    background: hsl(214, 17%, 51%);
+    width: 30px;
+    height: 30px;
+    bottom: -15px;
+    left: 25%;
+    transform: rotate(45deg);
+  }
+  
+}
+
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <div class="container">
+
+      <img src="./images/drawers.jpg" alt="chest of drawers">
+
+      <h1>Shift the overall look and feel by adding these wonderful 
+      touches to furniture in your home</h1>
+
+      <p>Ever been in a room and felt like something was missing? Perhaps 
+      it felt slightly bare and uninviting. I’ve got some simple tips 
+      to help you make any room feel complete.</p>
+
+      
+
+      <div id="bottomSection" class="bottomSection">
+
+        <img class="avatar" src="./images/avatar-michelle.jpg" alt="michelle">
+
+        <div class="bottomSectionText">
+          <h2>Michelle Appleton</h2>
+          <p>28 Jun 2020</p>
+        </div>
+
+        <img id="shareButton1" class="share" src="./images/icon-share.svg">
+
+      </div>
+
+      <div id="bottomSectionShare" class="bottomSectionShare invisible">
+
+        <h3>Share</h3>
+
+        <img src="./images/icon-facebook.svg" alt="facebook">
+        <img src="./images/icon-twitter.svg" alt="twitter">
+        <img src="./images/icon-pinterest.svg" alt="pinterest">
+        <img id="shareButton2" class="share" src="./images/icon-share.svg">
+
+    </div>
+
+    </div>
+  
+  </main>
+
+  <footer>
+
+    <div class="attribution">
+
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Your Name Here</a>.
+
+    </div>
+
+  </footer>
+
+  <script src="./index.js" charset="utf-8"></script>
+  
+</body>
+</html>
